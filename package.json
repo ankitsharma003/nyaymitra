@@ -19,7 +19,8 @@
     "prepare": "husky install",
     "deploy:vercel": "node deploy-vercel.js",
     "deploy:check": "vercel --prod",
-    "test:deployment": "node test-deployment.js"
+    "test:deployment": "node test-deployment.js",
+    "test:vercel": "node test-vercel-deployment.js"
   },
   "keywords": [
     "legal-tech",
