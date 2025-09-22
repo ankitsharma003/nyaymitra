@@ -20,7 +20,8 @@
     "deploy:vercel": "node deploy-vercel.js",
     "deploy:check": "vercel --prod",
     "test:deployment": "node test-deployment.js",
-    "test:vercel": "node test-vercel-deployment.js"
+    "test:vercel": "node test-vercel-deployment.js",
+    "test:api": "node test-api-endpoints.js"
   },
   "keywords": [
     "legal-tech",

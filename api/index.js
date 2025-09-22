@@ -1,12 +1,26 @@
 // Vercel serverless function entry point
-import serverApp from '../backend/src/server.js'
-
-// Export the Express app for Vercel
 export default async function handler(req, res) {
-  // Use the Express app to handle the request
-  return new Promise((resolve) => {
-    serverApp(req, res, () => {
-      resolve()
-    })
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization'
+  )
+
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
+
+  // Basic health check response
+  res.status(200).json({
+    success: true,
+    message: 'API is working',
+    timestamp: new Date().toISOString(),
+    method: req.method,
+    url: req.url
   })
 }
