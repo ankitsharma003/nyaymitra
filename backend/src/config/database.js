@@ -13,9 +13,9 @@ let connected = false
 let connecting = false
 
 // Basic retry config - reduce retries for serverless environments
-const isServerless = process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NODE_ENV === 'production'
-const MAX_RETRIES = isServerless ? 2 : parseInt(process.env.MONGODB_CONNECT_RETRIES || '5', 10)
-const RETRY_DELAY_MS = isServerless ? 2000 : parseInt(
+const isServerless = process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME
+const MAX_RETRIES = isServerless ? 1 : parseInt(process.env.MONGODB_CONNECT_RETRIES || '5', 10)
+const RETRY_DELAY_MS = isServerless ? 1000 : parseInt(
   process.env.MONGODB_RETRY_DELAY_MS || '5000',
   10
 )

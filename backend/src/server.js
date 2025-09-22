@@ -13,14 +13,25 @@ import dbRequired from './middleware/dbRequired.js'
 // Initialize dotenv
 dotenv.config()
 
-// Validate required environment variables
-const requiredEnvVars = ['JWT_SECRET', 'JWT_REFRESH_SECRET']
-const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar])
+// Validate required environment variables (only in development)
+if (process.env.NODE_ENV !== 'production') {
+  const requiredEnvVars = ['JWT_SECRET', 'JWT_REFRESH_SECRET']
+  const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar])
 
-if (missingEnvVars.length > 0) {
-  console.error('❌ Missing required environment variables:', missingEnvVars.join(', '))
-  console.error('Please check your .env file or environment configuration')
-  process.exit(1)
+  if (missingEnvVars.length > 0) {
+    console.error('❌ Missing required environment variables:', missingEnvVars.join(', '))
+    console.error('Please check your .env file or environment configuration')
+    process.exit(1)
+  }
+} else {
+  // In production, just warn about missing variables but don't exit
+  const requiredEnvVars = ['JWT_SECRET', 'JWT_REFRESH_SECRET']
+  const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar])
+  
+  if (missingEnvVars.length > 0) {
+    console.warn('⚠️ Missing environment variables in production:', missingEnvVars.join(', '))
+    console.warn('Some features may not work correctly')
+  }
 }
 
 // Import routes directly
