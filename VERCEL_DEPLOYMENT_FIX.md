@@ -10,13 +10,14 @@ Your changes aren't being deployed from GitHub to Vercel because:
 
 ### 1. Created Root Vercel Configuration
 - ✅ `vercel.json` - Handles both frontend and backend
-- ✅ Routes API calls to backend
+- ✅ Routes API calls to backend (server.js)
 - ✅ Routes other requests to frontend
 
 ### 2. Updated Backend Configuration
 - ✅ `backend/vercel.json` - Backend-specific settings
-- ✅ Proper build commands
-- ✅ Environment variables
+- ✅ Uses `src/server.js` as main entry point
+- ✅ Removed `index.js` dependency
+- ✅ All routes accessible from server.js
 
 ### 3. Added Deployment Tools
 - ✅ `deploy-vercel.js` - Configuration helper

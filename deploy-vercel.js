@@ -23,14 +23,14 @@ if (isMonorepo) {
         "use": "@vercel/next"
       },
       {
-        "src": "backend/index.js",
+        "src": "backend/src/server.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/api/(.*)",
-        "dest": "/backend/index.js"
+        "dest": "/backend/src/server.js"
       },
       {
         "src": "/(.*)",
@@ -41,7 +41,7 @@ if (isMonorepo) {
       "NODE_ENV": "production"
     },
     "functions": {
-      "backend/index.js": {
+      "backend/src/server.js": {
         "maxDuration": 30
       }
     }
@@ -62,6 +62,13 @@ if (existsSync('backend/package.json')) {
   console.log(`   Name: ${backendPackage.name}`)
   console.log(`   Main: ${backendPackage.main}`)
   console.log(`   Type: ${backendPackage.type || 'commonjs'}`)
+  
+  // Check if main entry is correct
+  if (backendPackage.main === 'src/server.js') {
+    console.log('   ✅ Main entry point is correct (src/server.js)')
+  } else {
+    console.log('   ⚠️ Main entry point should be src/server.js')
+  }
   
   // Check if backend has proper scripts
   const scripts = backendPackage.scripts || {}

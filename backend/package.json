@@ -2,7 +2,7 @@
   "name": "nyay-mitra-backend",
   "version": "1.0.0",
   "description": "Backend API for Nyāy Mitra legal assistance platform",
-  "main": "index.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon start.js",
@@ -10,6 +10,7 @@
     "test": "jest",
     "test:imports": "node test-imports.js",
     "test:db": "node test-db-connection.js",
+    "test:routes": "node test-routes.js",
     "test:ocr": "node test-ocr.js",
     "diagnose": "node diagnose-atlas.js",
     "fix:atlas": "node fix-atlas-connection.js",
