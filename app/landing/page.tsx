@@ -146,7 +146,7 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
-                href="/signup"
+                href="/dashboard"
                 className="rounded-lg bg-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-colors hover:bg-indigo-700"
               >
                 {localLang === 'hi' ? 'अभी शुरू करें' : 'Get Started Now'}
@@ -207,7 +207,7 @@ export default function LandingPage() {
               : 'Start your legal journey and empower yourself with Nyāy Mitra'}
           </p>
           <Link
-            href="/signup"
+            href="/dashboard"
             className="rounded-lg bg-white px-8 py-4 text-lg font-semibold text-indigo-600 shadow-lg transition-colors hover:bg-gray-100"
           >
             {localLang === 'hi' ? 'अभी शुरू करें' : 'Start Now'}
